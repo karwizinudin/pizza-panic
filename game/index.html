@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza Panic — Pizzeria Rush</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="brand">🍕 PIZZA PANIC <span class="sub">Pizzeria Rush</span></div>
+    <div class="hud-stat"><label>TIME</label><div id="timer" class="timer">2:30</div><div id="timebar"><div id="timefill"></div></div></div>
+    <div class="hud-stat"><label>SCORE</label><div id="score" class="bignum">0</div></div>
+    <div class="hud-stat"><label>COMBO</label><div id="combo" class="bignum">×1</div></div>
+    <div class="hud-stat"><label>SERVED</label><div id="served" class="bignum">0</div></div>
+    <button id="muteBtn" title="Sound on/off">🔊</button>
+  </header>
+
+  <section id="orders">
+    <h2>ORDER BOARD</h2>
+    <div id="orderRow"></div>
+  </section>
+
+  <main id="kitchen">
+    <div id="counter">
+      <h2>YOUR COUNTER</h2>
+      <div id="pizzaStage">
+        <div id="pizza" class="empty"><div class="hint">Click DOUGH to start a pizza</div></div>
+        <div id="pizzaState">No pizza — start with dough!</div>
+      </div>
+      <div id="plateRow">
+        <button id="serveBtn" class="action serve" disabled>SERVE 🍽️</button>
+        <button id="trashBtn" class="action trash" disabled>TRASH 🗑️</button>
+      </div>
+    </div>
+
+    <div id="stations">
+      <div class="station" id="stDough"><div class="icon">🫓</div><div class="sname">Dough</div><div class="skey">D</div></div>
+      <div class="station" id="stSauceTom"><div class="icon">🍅</div><div class="sname">Tomato Sauce</div><div class="skey">1</div></div>
+      <div class="station" id="stSauceBbq"><div class="icon">🥫</div><div class="sname">BBQ Sauce</div><div class="skey">2</div></div>
+      <div class="station" id="stPepperoni"><div class="icon">🥩</div><div class="sname">Pepperoni</div><div class="skey">3</div></div>
+      <div class="station" id="stMushroom"><div class="icon">🍄</div><div class="sname">Mushroom</div><div class="skey">4</div></div>
+      <div class="station" id="stPepper"><div class="icon">🫑</div><div class="sname">Bell Pepper</div><div class="skey">5</div></div>
+      <div class="station" id="stOnion"><div class="icon">🧅</div><div class="sname">Onion</div><div class="skey">6</div></div>
+      <div class="station" id="stOlive"><div class="icon">🫒</div><div class="sname">Olive</div><div class="skey">7</div></div>
+      <div class="station" id="stCheese"><div class="icon">🧀</div><div class="sname">Extra Cheese</div><div class="skey">8</div></div>
+      <div class="station oven" id="stOven"><div class="icon">🔥</div><div class="sname">Oven — Bake</div><div class="skey">B</div><div id="ovenBar"><div id="ovenFill"></div></div></div>
+      <div class="station" id="stSlice"><div class="icon">🔪</div><div class="sname">Slice</div><div class="skey">S</div></div>
+    </div>
+  </main>
+
+  <div id="toast"></div>
+
+  <div id="startScreen" class="overlay">
+    <div class="panel">
+      <h1>🍕 PIZZA PANIC</h1>
+      <p class="tag">The lunch rush is here. Build every pizza exactly as ordered —<br>before the customer loses patience!</p>
+      <ol class="howto">
+        <li><b>1.</b> Click <b>Dough</b>, then a <b>Sauce</b>, then the <b>Toppings</b> on the ticket.</li>
+        <li><b>2.</b> Click <b>Oven</b> to bake (6s). Don't let it burn!</li>
+        <li><b>3.</b> Click <b>Slice</b>, then <b>SERVE</b> to the matching order.</li>
+        <li>Wrong pizza = −50 pts &amp; combo lost. Serve fast for time bonus!</li>
+      </ol>
+      <button id="startBtn" class="big">START SHIFT ▶</button>
+      <p class="fine">150-second shift · keyboard: D dough · 1–8 sauce &amp; toppings · B bake · S slice · Enter serve</p>
+    </div>
+  </div>
+
+  <div id="endScreen" class="overlay hidden">
+    <div class="panel">
+      <h1>SHIFT OVER!</h1>
+      <p class="final-score">Score: <span id="finalScore">0</span></p>
+      <p id="finalStats"></p>
+      <p id="finalRank" class="rank"></p>
+      <button id="againBtn" class="big">PLAY AGAIN ↻</button>
+    </div>
+  </div>
+</div>
+<script src="orders.js"></script>
+<script src="audio.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

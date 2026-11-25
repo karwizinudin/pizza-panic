@@ -1,0 +1,74 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Trebuchet MS", Verdana, sans-serif; background: #2b1608; color: #fff8ec; }
+#app { width: 1280px; margin: 0 auto; background: linear-gradient(#7a3b12, #5a2a0c); min-height: 800px; padding: 10px 16px 16px; position: relative; }
+#hud { display: flex; align-items: center; gap: 22px; background: #3d1e08; border: 3px solid #c98a2e; border-radius: 12px; padding: 8px 16px; }
+.brand { font-size: 30px; font-weight: 900; color: #ffcf5c; letter-spacing: 1px; }
+.brand .sub { display: block; font-size: 12px; color: #ffb199; letter-spacing: 3px; }
+.hud-stat label { font-size: 11px; letter-spacing: 2px; color: #d8a05a; }
+.bignum { font-size: 28px; font-weight: 900; }
+.timer { font-size: 28px; font-weight: 900; color: #7dff9a; }
+.timer.low { color: #ff5d5d; animation: blink .5s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+#timebar { width: 130px; height: 8px; background: #1c0e04; border-radius: 4px; overflow: hidden; }
+#timefill { height: 100%; width: 100%; background: #7dff9a; }
+#muteBtn { margin-left: auto; font-size: 22px; background: #6b3a16; border: 2px solid #c98a2e; border-radius: 8px; cursor: pointer; padding: 4px 10px; }
+#orders { margin-top: 10px; background: #4a2410; border: 3px solid #c98a2e; border-radius: 12px; padding: 8px 12px; }
+#orders h2, #counter h2 { font-size: 14px; letter-spacing: 3px; color: #ffcf5c; margin-bottom: 6px; }
+#orderRow { display: flex; gap: 12px; min-height: 108px; }
+.ticket { flex: 1; background: #fff8ec; color: #3a2005; border-radius: 10px; padding: 8px 10px; border-top: 8px solid #e2543e; position: relative; box-shadow: 0 3px 0 #0006; }
+.ticket .tno { font-weight: 900; font-size: 13px; }
+.ticket .recipe { font-size: 26px; line-height: 1.25; margin: 4px 0; letter-spacing: 2px; }
+.ticket .rname { font-size: 12px; font-weight: 700; color: #7a3b12; }
+.ticket .patience { height: 10px; background: #e8d9bd; border-radius: 5px; overflow: hidden; margin-top: 6px; }
+.ticket .patience > div { height: 100%; background: #37b24d; }
+.ticket .patience > div.warn { background: #f08c00; }
+.ticket .patience > div.crit { background: #e03131; }
+.ticket.empty { background: #0003; border-top-color: #0000; color: #d8a05a; display: flex; align-items: center; justify-content: center; font-size: 13px; box-shadow: none; }
+#kitchen { display: flex; gap: 14px; margin-top: 12px; }
+#counter { flex: 0 0 430px; background: #8a5a2b; border: 3px solid #c98a2e; border-radius: 12px; padding: 10px 12px; }
+#pizzaStage { background: #6b3a16; border-radius: 10px; padding: 12px; text-align: center; }
+#pizza { width: 260px; height: 260px; margin: 0 auto; border-radius: 50%; position: relative; background: radial-gradient(circle at 50% 42%, #f3d9a4 0 62%, #d9a75f 63% 68%, #b57e35 69% 100%); box-shadow: 0 6px 0 #0005; }
+#pizza.empty { background: radial-gradient(circle at 50% 42%, #caa26a 0 62%, #a87c44 63% 100%); opacity: .55; }
+#pizza .hint { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #5a2a0c; font-weight: 700; padding: 30px; }
+#pizza .sauce { position: absolute; inset: 14%; border-radius: 50%; background: radial-gradient(circle, #d9480f 0 70%, #b23a0c 100%); }
+#pizza .sauce.bbq { background: radial-gradient(circle, #7a3b12 0 70%, #5a2a0c 100%); }
+#pizza .cheese { position: absolute; inset: 20%; border-radius: 50%; background: radial-gradient(circle, #ffd43b 0 75%, #fab005 100%); opacity: .9; }
+#pizza .top { position: absolute; font-size: 30px; }
+#pizza.baked { filter: saturate(1.15) brightness(1.05); }
+#pizza.baked::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 6px #a35c14; }
+#pizza.burnt { filter: grayscale(.7) brightness(.6); }
+#pizza.sliced::before, #pizza.sliced::after { content: ""; position: absolute; left: 50%; top: 4%; height: 92%; width: 3px; background: #7a3b12; }
+#pizza.sliced::before { transform: rotate(45deg); }
+#pizza.sliced::after { transform: rotate(-45deg); }
+#pizzaState { margin-top: 10px; font-weight: 700; font-size: 15px; min-height: 22px; }
+#plateRow { display: flex; gap: 10px; margin-top: 10px; }
+.action { flex: 1; font-size: 19px; font-weight: 900; padding: 12px; border-radius: 10px; border: none; cursor: pointer; color: #fff; }
+.action:disabled { opacity: .4; cursor: not-allowed; }
+.serve { background: #2b8a3e; } .serve:not(:disabled):hover { background: #37b24d; }
+.trash { background: #868e96; } .trash:not(:disabled):hover { background: #495057; }
+#stations { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.station { background: #fff8ec; color: #3a2005; border-radius: 12px; padding: 10px 6px; text-align: center; cursor: pointer; border: 3px solid #c98a2e; user-select: none; box-shadow: 0 3px 0 #0006; }
+.station:hover { transform: translateY(-2px); background: #ffe8b3; }
+.station:active { transform: translateY(1px); }
+.station .icon { font-size: 38px; }
+.station .sname { font-weight: 800; font-size: 14px; margin-top: 2px; }
+.station .skey { font-size: 11px; color: #a86a1f; font-weight: 700; }
+.station.used { outline: 3px solid #2b8a3e; background: #d3f9d8; }
+.station.oven { grid-column: span 2; background: #3d1e08; color: #ffcf5c; }
+.station.oven .icon { font-size: 44px; }
+#ovenBar { height: 10px; background: #1c0e04; border-radius: 5px; overflow: hidden; margin-top: 6px; }
+#ovenFill { height: 100%; width: 0%; background: #ffa94d; }
+#toast { position: absolute; left: 50%; top: 300px; transform: translateX(-50%); font-size: 34px; font-weight: 900; color: #ffcf5c; text-shadow: 0 3px 0 #000; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 5; }
+#toast.show { opacity: 1; }
+.overlay { position: absolute; inset: 0; background: #000a; display: flex; align-items: center; justify-content: center; z-index: 10; border-radius: 8px; }
+.overlay.hidden { display: none; }
+.panel { background: #fff8ec; color: #3a2005; border-radius: 16px; padding: 28px 36px; text-align: center; max-width: 620px; border: 4px solid #c98a2e; }
+.panel h1 { font-size: 44px; color: #d9480f; }
+.panel .tag { margin: 10px 0 16px; font-size: 16px; line-height: 1.5; }
+.howto { text-align: left; margin: 0 auto 18px; width: fit-content; font-size: 15px; line-height: 1.9; }
+.big { font-size: 22px; font-weight: 900; padding: 14px 34px; border-radius: 12px; border: none; background: #2b8a3e; color: #fff; cursor: pointer; }
+.big:hover { background: #37b24d; }
+.fine { margin-top: 14px; font-size: 12px; color: #866; }
+.final-score { font-size: 30px; font-weight: 900; margin: 12px 0 4px; }
+.rank { font-size: 18px; font-weight: 800; color: #d9480f; margin: 8px 0 16px; }
+#finalStats { font-size: 15px; line-height: 1.6; }
